@@ -9,6 +9,9 @@ class Manager(models.Model):
     def str(self):
         return f"{self.department}, {self.company_card}"
     
+    def get_role(self):
+        return f"manager"
+    
 class Intern(models.Model):
     mentor=models.ForeignKey(Manager, on_delete=models.SET_NULL, null=True, related_name="interns")
     internship_end_date = models.DateField()
@@ -16,7 +19,8 @@ class Intern(models.Model):
     def str(self):
         return f"{self.mentor}, {self.internship_end_date}"
 
-
+    def get_role(self):
+        return f"intern"
   
 class StaffBase(AbstractStaff):
     first_name = models.CharField(max_length=100)
