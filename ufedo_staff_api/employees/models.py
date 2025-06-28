@@ -1,5 +1,6 @@
-from django.contrib.auth.models import AbstractStaff
+
 from django.db import models
+from django.contrib.auth.models import AbstractUser 
 
 # Create your models here.
 class Manager(models.Model):
@@ -22,15 +23,13 @@ class Intern(models.Model):
     def get_role(self):
         return f"intern"
   
-class StaffBase(AbstractStaff):
+class StaffBase(AbstractUser):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     dob = models.DateField(null=True, blank=True)
     email = models.EmailField(unique=True)
     phone_number = models.CharField(max_length=20)
-    company_profile = models.ForeignKey(Company_profile, on_delete=models.CASCADE, null=True, blank=True)
-    resume = models.ForeignKey(Resume, on_delete=models.CASCADE, null=True, blank=True)
-    address = models.ForeignKey(Address, null=True, blank=True, on_delete=models.CASCADE)
 
     def str(self):
         return f"{self.first_name} {self.last_name}"
+

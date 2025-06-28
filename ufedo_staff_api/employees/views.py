@@ -14,7 +14,7 @@ class StaffBaseViewSet(viewsets.ModelViewSet):
     queryset = StaffBase.objects.all()
     serializer_class = StaffBaseSerializer
 
-def get_role(self, manager, intern, StaffBase):
+def get_role(self,):
         return f"manager", "intern", "StaffBase"
         
 
